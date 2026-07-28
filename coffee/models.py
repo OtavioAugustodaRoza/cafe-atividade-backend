@@ -42,7 +42,7 @@ class Avaliacao(models.Model):
     criado_em = models.DateTimeField(auto_now_add=True)
 
     @property
-    def media(self):
+    def media_avaliacao(self):
         return (
             self.aroma
             + self.sabor
@@ -52,4 +52,4 @@ class Avaliacao(models.Model):
         ) / 5
 
     def __str__(self):
-        return f"{self.cafe.nome} - Média: {self.media:.1f}"
+        return f"{self.cafe.nome} - Média: {self.media_avaliacao:.1f}"

@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import Cafe, Avaliacao
 
-# Register your models here.
-
-
 
 @admin.register(Cafe)
 class CafeAdmin(admin.ModelAdmin):
@@ -21,3 +18,7 @@ class AvaliacaoAdmin(admin.ModelAdmin):
     )
     list_filter = ("criado_em",)
     search_fields = ("cafe__nome",)
+
+    @admin.display(description="Média")
+    def media(self, obj):
+        return round(obj.media_avaliacao, 1)

@@ -9,8 +9,11 @@ class CafeSerializer(serializers.ModelSerializer):
 
 
 class AvaliacaoSerializer(serializers.ModelSerializer):
-    media = serializers.ReadOnlyField()
+    media = serializers.SerializerMethodField()
 
     class Meta:
         model = Avaliacao
         fields = "__all__"
+
+    def get_media(self, obj):
+        return round(obj.media_avaliacao, 1)
